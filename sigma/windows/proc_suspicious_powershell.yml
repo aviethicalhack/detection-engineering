@@ -1,0 +1,45 @@
+
+title: Suspicious PowerShell Execution with Encoded or Evasive Arguments
+id: 7d2c5c2e-5e4b-4b9d-9f3a-8d6c7e1a2b45
+status: experimental
+description: Detects PowerShell process creation with command-line indicators associated with encoded commands or common execution-evasion options.
+author: aviethicalhack
+date: 2026/10/11
+references:
+    - https://attack.mitre.org/techniques/T1059/001/
+tags:
+    - attack.execution
+    - attack.t1059
+    - attack.t1059.001
+
+logsource:
+    product: windows
+    category: process_creation
+
+detection:
+    selection_powershell:
+        Image|endswith:
+            - '\powershell.exe'
+            - '\pwsh.exe'
+
+    selection_encoded:
+        CommandLine|contains:
+            - '-encodedcommand'
+            - '-enc '
+            - '-e '
+
+    selection_evasion:
+        CommandLine|contains:
+            - '-nop'
+            - '-noprofile'
+            - '-executionpolicy bypass'
+            - '-windowstyle hidden'
+
+    condition: selection_powershell and (selection_encoded or selection_evasion)
+
+falsepositives:
+    - Legitimate administrative scripts
+    - Authorized security testing
+    - Automation using encoded PowerShell commands
+
+level: high
