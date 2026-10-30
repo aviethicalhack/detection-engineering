@@ -55,6 +55,27 @@
     "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
     "CommandLine": "powershell.exe -EncodedCommand VABlAHMAdAA=",
     "expected_match": true
-  }
+  },
+{
+    "test_id": "T09",
+    "description": "Single-letter encoded option should not match",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -e test",
+    "expected_match": false
+},
+{
+    "test_id": "T10",
+    "description": "Short encoded command option",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -enc VABLAHMA",
+    "expected_match": true
+},
+{
+    "test_id": "T11",
+    "description": "Abbreviated encoded command option",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -encodedcom VABLAHMA",
+    "expected_match": true
+}
 
 ]

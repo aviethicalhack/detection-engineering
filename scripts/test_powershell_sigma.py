@@ -29,7 +29,7 @@ def matches_rule(event):
 
     # Match encoded-command options, including valid abbreviations.
     has_encoded_indicator = any(
-        re.fullmatch(r"-e(?:nc(?:odedcommand)?)?", arg.strip('"'))
+        re.fullmatch(r"-enc(?:odedcom(?:mand)?)?", arg.strip('"'))
         for arg in arguments
     )
 
