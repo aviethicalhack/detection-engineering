@@ -1,0 +1,60 @@
+
+[
+  {
+    "test_id": "T01",
+    "description": "Encoded PowerShell command",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -EncodedCommand PLACEHOLDER",
+    "expected_match": true
+  },
+  {
+    "test_id": "T02",
+    "description": "PowerShell with no profile",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -NoProfile -File maintenance.ps1",
+    "expected_match": true
+  },
+  {
+    "test_id": "T03",
+    "description": "Hidden PowerShell window",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -WindowStyle Hidden -File maintenance.ps1",
+    "expected_match": true
+  },
+  {
+    "test_id": "T04",
+    "description": "Execution policy bypass",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -ExecutionPolicy Bypass -File maintenance.ps1",
+    "expected_match": true
+  },
+  {
+    "test_id": "T05",
+    "description": "Ordinary PowerShell command",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -File maintenance.ps1",
+    "expected_match": false
+  },
+  {
+    "test_id": "T06",
+    "description": "Non-PowerShell process",
+    "Image": "C:\\Windows\\System32\\cmd.exe",
+    "CommandLine": "cmd.exe /c whoami",
+    "expected_match": false
+  },
+  {
+    "test_id": "T07",
+    "description": "Unrelated argument containing enc",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -encoding UTF8 -File maintenance.ps1",
+    "expected_match": false
+  },
+  {
+    "test_id": "T08",
+    "description": "Encoded command option",
+    "Image": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+    "CommandLine": "powershell.exe -EncodedCommand VABlAHMAdAA=",
+    "expected_match": true
+  }
+
+]
